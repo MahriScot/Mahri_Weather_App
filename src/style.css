@@ -20,26 +20,28 @@ h2 {
   color: #323653;
 }
 
+h5 {
+  color: #323653;
+}
+
 ul {
-  list-style: none;
   font-family: "Mukta", sans-serif;
   color: #323653;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
 }
 
 .app {
   max-width: 700px;
-  display: block;
-  margin: 20px auto;
+  margin: 20px auto 0;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-}
-
-.container {
   border: 2px solid #323653;
-  border-radius: 10px;
-  padding: 15px 15px 0px 15px;
-  border-radius: 10px;
-  margin: 0 auto;
+  padding: 20px 5px;
 }
 
 #search-form {
@@ -67,17 +69,20 @@ ul {
 }
 
 .weather-symbol {
-  font-size: 45px;
+  font-size: 50px;
 }
 .temperatureNow {
-  font-size: 20px;
+  font-size: 25px;
+  color: #323653;
 }
 .units {
   font-size: 12px;
   vertical-align: super;
 }
+
 .description {
   font-size: 15px;
+  color: #323653;
 }
 
 .today-breakdown {
@@ -99,4 +104,5 @@ ul {
 
 .me {
   color: #4c9173;
+  margin: 0 auto;
 }
