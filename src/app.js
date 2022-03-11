@@ -45,12 +45,9 @@ if (minutes < 10) {
 dateToday.innerHTML = `${day} ${date} ${month} ${year}`;
 timeNow.innerHTML = `${hours}:${minutes}`;
 
-// *******end of MY location current date and time
 // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 // need to add in a greeting function
-
-// need to change the weather symbol to correspond to report
 
 // need to find out where the future forecasts are
 
@@ -87,8 +84,10 @@ function displayWeatherCondition(response) {
   let maxTempElement = document.querySelector("#max-temp");
   let weatherIconElement = document.querySelector("#weather-icon");
 
+  celsiusTemperature = response.data.main.temp;
+
   citySearchedElement.innerHTML = response.data.name;
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   humidityElement.innerHTML = response.data.main.humidity + "%";
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed) + "km/h";
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -125,22 +124,35 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function convertToFahrenheit(event) {
+function displayFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature-now");
-  temperatureElement.innerHTML = 66;
+  celsiusOption.classList.remove("active");
+  farhenheitOption.classList.add("active");
+  let farhenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farhenheitTemp);
 }
 
-function convertToCelsius(event) {
+function displayCelsius(event) {
   event.preventDefault();
+  celsiusOption.classList.add("active");
+  farhenheitOption.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature-now");
-  temperatureElement.innerHTML = 19;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let farhenheitOption = document.querySelector("#temperature-f");
+farhenheitOption.addEventListener("click", displayFahrenheit);
+
+let celsiusOption = document.querySelector("#temperature-c");
+celsiusOption.addEventListener("click", displayCelsius);
 
 searchCity("Glasgow");

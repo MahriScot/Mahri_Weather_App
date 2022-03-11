@@ -1,9 +1,9 @@
 body {
   color: #323653;
   background: linear-gradient(
-    44.8deg,
-    rgba(255, 136, 102, 0.67) -53.1%,
-    rgba(255, 221, 136, 0.28) 49%
+    89deg,
+    rgb(253, 220, 155) 26.2%,
+    rgb(255, 215, 165) 48.5%
   );
   font-family: "Mukta", sans-serif;
 }
@@ -34,7 +34,7 @@ ul {
 li {
   list-style: none;
 }
-li::first-letter {
+li:first-letter {
   text-transform: capitalize;
 }
 
@@ -56,31 +56,44 @@ li::first-letter {
 #search-text-input {
   border: 1.5px solid #323653;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  background: #f6e7d8;
 }
 #search-button {
   border: 1.5px solid #323653;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   color: #323653;
-  background: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  background: #f6e7d8;
 }
 
 #current-location-button {
   border: 1.5px solid #323653;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   color: #323653;
-  background: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  background: #f6e7d8;
 }
 
-.weather-symbol {
-  font-size: 50px;
+#weather-icon {
+  padding: 1px;
+  border-radius: 50px;
 }
+
+.temperature-displayed .active {
+  color: #323653;
+  cursor: default;
+}
+
+.temperature-displayed .active:hover {
+  text-decoration: none;
+}
+
 .temperatureNow {
-  font-size: 25px;
+  font-size: 30px;
   color: #323653;
 }
+
 .units {
-  font-size: 12px;
-  vertical-align: super;
+  font-size: 18px;
+  vertical-align: top;
 }
 
 .description {
