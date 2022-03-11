@@ -2,22 +2,30 @@ let now = new Date();
 let dateToday = document.querySelector("#date-today");
 let timeNow = document.querySelector("#current-time");
 
-let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 let day = days[now.getDay()];
 let date = now.getDate();
 let months = [
-  "Jan",
-  "Feb",
+  "January",
+  "February",
   "March",
   "April",
   "May",
   "June",
   "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 let month = months[now.getMonth()];
 let year = now.getFullYear();
@@ -68,6 +76,7 @@ timeNow.innerHTML = `${hours}:${minutes}`;
 //   tempC.addEventListener("click", showCelcius);
 
 function displayWeatherCondition(response) {
+  //remove this console.log
   console.log(response.data);
   let citySearchedElement = document.querySelector("#searched-location");
   let temperatureElement = document.querySelector("#temperature-now");
@@ -76,6 +85,8 @@ function displayWeatherCondition(response) {
   let descriptionElement = document.querySelector("#description");
   let minTempElement = document.querySelector("#min-temp");
   let maxTempElement = document.querySelector("#max-temp");
+  let weatherIconElement = document.querySelector("#weather-icon");
+
   citySearchedElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   humidityElement.innerHTML = response.data.main.humidity + "%";
@@ -83,6 +94,11 @@ function displayWeatherCondition(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   minTempElement.innerHTML = Math.round(response.data.main.temp_min) + "°C";
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max) + "°C";
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(city) {

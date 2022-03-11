@@ -1,9 +1,9 @@
 body {
   color: #323653;
   background: linear-gradient(
-    -20deg,
-    rgb(233, 222, 250) 0%,
-    rgb(251, 252, 219) 100%
+    44.8deg,
+    rgba(255, 136, 102, 0.67) -53.1%,
+    rgba(255, 221, 136, 0.28) 49%
   );
   font-family: "Mukta", sans-serif;
 }
@@ -33,6 +33,8 @@ ul {
 
 li {
   list-style: none;
+}
+li::first-letter {
   text-transform: capitalize;
 }
 
