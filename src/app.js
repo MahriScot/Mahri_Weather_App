@@ -68,22 +68,21 @@ timeNow.innerHTML = `${hours}:${minutes}`;
 //   tempC.addEventListener("click", showCelcius);
 
 function displayWeatherCondition(response) {
-  document.querySelector("#searched-location").innerHTML = response.data.name;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#humidity").innerHTML =
-    response.data.main.humidity + "%";
-  document.querySelector("#wind-speed").innerHTML =
-    Math.round(response.data.wind.speed) + "km/h";
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
-  document.querySelector("#min-temp").innerHTML = Math.round(
-    response.data.main.temp_min
-  );
-  document.querySelector("#max-temp").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
+  console.log(response.data);
+  let citySearchedElement = document.querySelector("#searched-location");
+  let temperatureElement = document.querySelector("#temperature-now");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind-speed");
+  let descriptionElement = document.querySelector("#description");
+  let minTempElement = document.querySelector("#min-temp");
+  let maxTempElement = document.querySelector("#max-temp");
+  citySearchedElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  humidityElement.innerHTML = response.data.main.humidity + "%";
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed) + "km/h";
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  minTempElement.innerHTML = Math.round(response.data.main.temp_min) + "°C";
+  maxTempElement.innerHTML = Math.round(response.data.main.temp_max) + "°C";
 }
 
 function searchCity(city) {
