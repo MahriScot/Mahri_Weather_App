@@ -49,8 +49,6 @@ timeNow.innerHTML = `${hours}:${minutes}`;
 
 // need to add in a greeting function
 
-// need to find out where the future forecasts are
-
 // AS BELOW changing celcius to fahrenheit just loses all my data re: searched location. and it doesn't work anyway...
 
 // function showFahrenheit(event) {
@@ -74,7 +72,8 @@ timeNow.innerHTML = `${hours}:${minutes}`;
 
 //future forecast
 
-function displayFutureForecast() {
+function displayFutureForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#future-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -105,6 +104,13 @@ function displayFutureForecast() {
 
 //end of future forecast
 
+function getFutureForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "1cea906f8f3ab268b1c4225a33a9637a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayFutureForecast);
+}
+
 function displayWeatherCondition(response) {
   //remove this console.log
   console.log(response.data);
@@ -131,6 +137,8 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getFutureForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -189,4 +197,3 @@ let celsiusOption = document.querySelector("#temperature-c");
 celsiusOption.addEventListener("click", displayCelsius);
 
 searchCity("Glasgow");
-displayFutureForecast();
