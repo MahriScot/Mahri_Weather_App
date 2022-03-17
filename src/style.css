@@ -111,6 +111,19 @@ li:first-letter {
   text-align: center;
 }
 
+.the-future-day {
+  font-size: 15px;
+  color: #323653;
+}
+
+.the-future-temps {
+  font-size: 13px;
+}
+
+.future-temp-min {
+  opacity: 0.6;
+}
+
 .footer {
   padding: 10px;
   text-align: center;

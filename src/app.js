@@ -72,6 +72,39 @@ timeNow.innerHTML = `${hours}:${minutes}`;
 //   let tempC = document.querySelector("#temperature-c");
 //   tempC.addEventListener("click", showCelcius);
 
+//future forecast
+
+function displayFutureForecast() {
+  let forecastElement = document.querySelector("#future-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2">
+            <div class="the-future-day">${day}</div>
+            <img
+              src=""
+              alt="Weather Icon"
+              class="future-weather-icon"
+              width="36"
+            />
+            <div class="the-future-temps">
+              <span class="future-temp-min">4°C</span>
+              <span class="future-temp-max">8°C</span>
+            </div>
+          </div>
+`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+//end of future forecast
+
 function displayWeatherCondition(response) {
   //remove this console.log
   console.log(response.data);
@@ -156,3 +189,4 @@ let celsiusOption = document.querySelector("#temperature-c");
 celsiusOption.addEventListener("click", displayCelsius);
 
 searchCity("Glasgow");
+displayFutureForecast();
