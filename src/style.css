@@ -15,7 +15,7 @@ h6 {
   color: #323653;
 }
 
-h2 {
+h3 {
   font-family: "Mukta", sans-serif;
   color: #323653;
 }
@@ -40,17 +40,17 @@ li:first-letter {
 
 .app {
   max-width: 700px;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   border: 2px solid #323653;
-  padding: 20px 5px;
+  padding: 10px 5px;
 }
 
 #search-form {
   text-align: center;
-  padding: 10px;
-  margin: 20px 10px;
+  padding: 5px;
+  margin: 5px 10px;
 }
 
 #search-text-input {
@@ -72,9 +72,11 @@ li:first-letter {
   background: #f6e7d8;
 }
 
+.last-updated {
+  font-size: 16px;
+}
 #weather-icon {
-  padding: 1px;
-  border-radius: 50px;
+  vertical-align: top;
 }
 
 .temperature-displayed .active {
@@ -87,12 +89,12 @@ li:first-letter {
 }
 
 .temperatureNow {
-  font-size: 30px;
+  font-size: 25px;
   color: #323653;
 }
 
 .units {
-  font-size: 18px;
+  font-size: 15px;
   vertical-align: top;
 }
 
@@ -104,6 +106,7 @@ li:first-letter {
 .today-breakdown {
   color: #323653;
   text-align: center;
+  font-size: 15px;
 }
 
 .the-future {

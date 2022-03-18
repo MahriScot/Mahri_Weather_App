@@ -45,6 +45,13 @@ if (minutes < 10) {
 dateToday.innerHTML = `${day} ${date} ${month} ${year}`;
 timeNow.innerHTML = `${hours}:${minutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+  return days[day];
+}
 // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 // need to add in a greeting function
@@ -73,29 +80,37 @@ timeNow.innerHTML = `${hours}:${minutes}`;
 //future forecast
 
 function displayFutureForecast(response) {
-  console.log(response.data.daily);
+  let forcast = response.data.daily;
+
   let forecastElement = document.querySelector("#future-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forcast.forEach(function (forcastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col-2">
-            <div class="the-future-day">${day}</div>
+            <div class="the-future-day">${formatDay(forcastDay.dt)}</div>
             <img
-              src=""
+              src="http://openweathermap.org/img/wn/${
+                forcastDay.weather[0].icon
+              }@2x.png"
               alt="Weather Icon"
-              class="future-weather-icon"
               width="36"
             />
             <div class="the-future-temps">
-              <span class="future-temp-min">4°C</span>
-              <span class="future-temp-max">8°C</span>
+              <span class="future-temp-min">${Math.round(
+                forcastDay.temp.min
+              )}°C</span>
+              <span class="future-temp-max">${Math.round(
+                forcastDay.temp.max
+              )}°C</span>
             </div>
           </div>
 `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -196,4 +211,4 @@ farhenheitOption.addEventListener("click", displayFahrenheit);
 let celsiusOption = document.querySelector("#temperature-c");
 celsiusOption.addEventListener("click", displayCelsius);
 
-searchCity("Glasgow");
+searchCity("Edinburgh");
