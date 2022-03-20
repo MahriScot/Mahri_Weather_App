@@ -52,60 +52,34 @@ function formatDay(timestamp) {
 
   return days[day];
 }
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-// need to add in a greeting function
-
-// AS BELOW changing celcius to fahrenheit just loses all my data re: searched location. and it doesn't work anyway...
-
-// function showFahrenheit(event) {
-//     event.preventDefault();
-//     let tempF = document.querySelector("#temperature-now");
-//     let temperature = `${Math.round(tempC * 9) / 5 + 32}`;
-//     tempF.innerHTML = temperature;
-//     }
-
-//   let tempF = document.querySelector("#temperature-f");
-//   tempF.addEventListener("click", showFahrenheit);
-
-//   function showCelcius(event) {
-//     event.preventDefault();
-//     let tempC = document.querySelector("#temperature-now");
-//     tempC.innerHTML = Math.round(response.data.main.temp;
-//   }
-
-//   let tempC = document.querySelector("#temperature-c");
-//   tempC.addEventListener("click", showCelcius);
-
-//future forecast
 
 function displayFutureForecast(response) {
-  let forcast = response.data.daily;
+  let futureForcast = response.data.daily;
 
   let forecastElement = document.querySelector("#future-forecast");
 
   let forecastHTML = `<div class="row">`;
 
-  forcast.forEach(function (forcastDay, index) {
+  futureForcast.forEach(function (futureForcastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
           <div class="col-2">
-            <div class="the-future-day">${formatDay(forcastDay.dt)}</div>
+            <div class="the-future-day">${formatDay(futureForcastDay.dt)}</div>
             <img
               src="http://openweathermap.org/img/wn/${
-                forcastDay.weather[0].icon
+                futureForcastDay.weather[0].icon
               }@2x.png"
               alt="Weather Icon"
-              width="36"
+              width="40"
             />
             <div class="the-future-temps">
               <span class="future-temp-min">${Math.round(
-                forcastDay.temp.min
+                futureForcastDay.temp.min
               )}°C</span>
               <span class="future-temp-max">${Math.round(
-                forcastDay.temp.max
+                futureForcastDay.temp.max
               )}°C</span>
             </div>
           </div>
@@ -116,8 +90,6 @@ function displayFutureForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-//end of future forecast
 
 function getFutureForecast(coordinates) {
   console.log(coordinates);
